@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Surprise 💗</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #f58ac5;
+    --dark-pink: #c93675;
+    --light-pink: #fff0f6;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #ffe4ef, #fff5f8, #ffd6e7);
+    color: #8e2854;
+}
+
+/* FLOATING BACKGROUND HEARTS */
+
+.heart {
+    position: fixed;
+    bottom: -40px;
+    color: rgba(231, 84, 145, 0.4);
+    font-size: 24px;
+    animation: floatUp linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.heart:nth-child(1) {
+    left: 8%;
+    animation-duration: 9s;
+}
+
+.heart:nth-child(2) {
+    left: 22%;
+    animation-duration: 12s;
+    animation-delay: 2s;
+}
+
+.heart:nth-child(3) {
+    left: 76%;
+    animation-duration: 10s;
+    animation-delay: 1s;
+}
+
+.heart:nth-child(4) {
+    left: 91%;
+    animation-duration: 13s;
+    animation-delay: 3s;
+}
+
+.heart:nth-child(5) {
+    left: 48%;
+    animation-duration: 11s;
+    animation-delay: 4s;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* GENERAL PAGE STYLING */
+
+.page {
+    width: min(90%, 430px);
+    text-align: center;
+    padding: 32px 22px;
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
+    box-shadow: 0 15px 45px rgba(174, 54, 105, 0.15);
+    backdrop-filter: blur(8px);
+    animation: pageAppear 0.8s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes pageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.small-title {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c45a87;
+    margin-bottom: 12px;
+}
+
+h1,
+h2 {
+    font-family: Georgia, serif;
+    color: var(--dark-pink);
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: clamp(27px, 7vw, 36px);
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #98506f;
+    margin-bottom: 20px;
+}
+
+/* BUTTONS */
+
+button {
+    border: none;
+    background: linear-gradient(135deg, #ee78a7, #cf3679);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(207, 54, 121, 0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(207, 54, 121, 0.35);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button:disabled {
+    cursor: default;
+    opacity: 0.8;
+}
+
+.hint {
+    margin-top: 17px;
+    font-size: 12px;
+    color: #b66b8b;
+}
+
+/* PAGE 1: GIFT BOX */
+
+.gift-area {
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0 15px;
+}
+
+.gift {
+    width: 170px;
+    height: 145px;
+    position: relative;
+    animation: giftBounce 2s ease-in-out infinite;
+}
+
+@keyframes giftBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.gift-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 170px;
+    height: 110px;
+    background: linear-gradient(135deg, #f58ab5, #e75491);
+    border-radius: 8px 8px 14px 14px;
+    box-shadow: 0 12px 20px rgba(180, 50, 105, 0.2);
+}
+
+.gift-box::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    background: #ffe2a8;
+    left: 70px;
+}
+
+.gift-lid {
+    position: absolute;
+    width: 190px;
+    height: 30px;
+    left: -10px;
+    top: 25px;
+    background: linear-gradient(135deg, #f8a0c2, #e75491);
+    border-radius: 8px;
+    z-index: 2;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.gift-lid::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #ffe2a8;
+    left: 80px;
+}
+
+.bow {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 45px;
+    z-index: 3;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.bow::before,
+.bow::after {
+    content: "";
+    position: absolute;
+    width: 42px;
+    height: 30px;
+    border: 10px solid #ffe2a8;
+    border-radius: 50% 50% 10% 50%;
+}
+
+.bow::before {
+    left: 0;
+    transform: rotate(25deg);
+}
+
+.bow::after {
+    right: 0;
+    transform: rotate(65deg) scaleX(-1);
+}
+
+.gift.open .gift-lid {
+    transform: translate(25px, -100px) rotate(18deg);
+    opacity: 0;
+}
+
+.gift.open .bow {
+    transform: translate(25px, -100px) rotate(18deg);
+    opacity: 0;
+}
+
+/* BLAST TRANSITION */
+
+.blast {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.blast.show {
+    display: flex;
+    animation: blastFlash 0.8s ease forwards;
+}
+
+.blast-word {
+    font-size: clamp(35px, 10vw, 65px);
+    opacity: 0;
+    transform: scale(0.2);
+    text-shadow: 0 0 25px white, 0 0 45px #ff65a5;
+}
+
+.blast.show .blast-word {
+    animation: blastWord 0.8s ease forwards;
+}
+
+@keyframes blastFlash {
+    0% {
+        background: rgba(255, 225, 239, 0);
+    }
+
+    20% {
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    100% {
+        background: rgba(255, 225, 239, 0);
+    }
+}
+
+@keyframes blastWord {
+    0% {
+        opacity: 0;
+        transform: scale(0.2) rotate(-20deg);
+    }
+
+    35% {
+        opacity: 1;
+        transform: scale(1.3) rotate(8deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.8) rotate(15deg);
+    }
+}
+
+.burst-piece {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 21;
+    pointer-events: none;
+    font-size: 24px;
+    animation: burstOut 1.3s ease-out forwards;
+}
+
+@keyframes burstOut {
+    from {
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 1;
+    }
+
+    to {
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(var(--rotation))
+            scale(1.4);
+        opacity: 0;
+    }
+}
+
+/* PAGE 2: ENVELOPE */
+
+.envelope-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    overflow: hidden;
+}
+
+.envelope-scene {
+    position: relative;
+    width: min(85vw, 320px);
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 5px;
+}
+
+.envelope {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    height: 175px;
+    background: #f58ac5;
+    border-radius: 5px;
+    box-shadow: 0 10px 25px rgba(160, 45, 95, 0.18);
+    z-index: 2;
+}
+
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    background: #f58ac5;
+    clip-path: polygon(
+        0 0,
+        50% 58%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+    border-radius: 5px;
+    z-index: 4;
+}
+
+.envelope-fold {
+    position: absolute;
+    inset: 0;
+    background: #ee79b5;
+    clip-path: polygon(
+        0 100%,
+        50% 48%,
+        100% 100%
+    );
+    z-index: 3;
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #ffb6d9;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+    transform-origin: top center;
+    transform: rotateX(0deg);
+    transition: transform 0.8s ease;
+    z-index: 5;
+    backface-visibility: visible;
+}
+
+/* LETTER SHEET */
+
+.letter-sheet {
+    position: absolute;
+    bottom: 45px;
+    left: 7%;
+    width: 86%;
+    height: 155px;
+    background: #fffdfd;
+    border: 1px solid #f5dce8;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(120, 40, 80, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(0);
+    transition: transform 1.2s ease;
+}
+
+.letter-sheet span {
+    font-family: cursive;
+    font-size: 20px;
+    color: #d78bb5;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+/* OPEN ENVELOPE ANIMATION */
+
+.envelope-scene.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope-scene.open .letter-sheet {
+    transform: translateY(-125px);
+    z-index: 6;
+}
+
+.envelope-scene.open .letter-sheet span {
+    opacity: 1;
+}
+
+/* ENVELOPE BUTTONS */
+
+.envelope-button {
+    margin-top: 5px;
+}
+
+.read-letter-button {
+    margin-top: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.read-letter-button.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* PAGE 3: BIRTHDAY LETTER */
+
+.letter-page {
+    width: min(90%, 460px);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.letter-page h2 {
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.letter-paper {
+    background: #fffafc;
+    border: 1px solid #f4c0d4;
+    border-radius: 15px;
+    padding: 24px 20px;
+    margin-top: 20px;
+    text-align: left;
+    color: #87415f;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.9;
+    white-space: pre-line;
+}
+
+.signature {
+    margin-top: 20px;
+    text-align: right;
+    color: var(--dark-pink);
+    font-style: italic;
+    font-size: 19px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 480px) {
+    .page:not(.envelope-page) {
+        padding: 28px 17px;
+    }
+
+    .gift-area {
+        height: 200px;
+    }
+
+    .envelope-scene {
+        width: min(85vw, 320px);
+        height: 260px;
+    }
+
+    .envelope {
+        height: 155px;
+    }
+
+    .letter-sheet {
+        height: 140px;
+        bottom: 40px;
+    }
+
+    .envelope-scene.open .letter-sheet {
+        transform: translateY(-115px);
+    }
+
+    .letter-page {
+        padding: 24px 16px;
+    }
+
+    .letter-paper {
+        padding: 20px 16px;
+        font-size: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING HEARTS -->
+
+<div class="heart">♥</div>
+<div class="heart">♡</div>
+<div class="heart">♥</div>
+<div class="heart">♡</div>
+<div class="heart">♥</div>
+
+<!-- PAGE 1: GIFT BOX -->
+
+<main class="page" id="giftPage">
+
+    <p class="small-title">A little surprise for you</p>
+
+    <h1>Something Special<br>For My Birthday Boy! 🎂</h1>
+
+    <p class="subtitle">
+        Your favorite girl has wrapped up a little piece of her heart
+        just for you. Are you ready to open it?
+    </p>
+
+    <div class="gift-area">
+        <div class="gift" id="gift">
+            <div class="bow"></div>
+            <div class="gift-lid"></div>
+            <div class="gift-box"></div>
+        </div>
+    </div>
+
+    <button id="giftButton" onclick="openGift()">
+        🎁 Open Your Gift
+    </button>
+
+    <p class="hint">Made with lots of love, just for you 💗</p>
+
+</main>
+
+<!-- BLAST TRANSITION -->
+
+<div class="blast" id="blast">
+    <div class="blast-word">💖 Surprise! 💖</div>
+</div>
+
+<!-- PAGE 2: ENVELOPE -->
+
+<section class="page envelope-page hidden" id="envelopePage">
+
+    <p class="small-title">A little surprise for you</p>
+
+    <h1>A Letter For You 💌</h1>
+
+    <div class="envelope-scene" id="envelopeScene">
+
+        <div class="letter-sheet" id="letterSheet">
+            <span>For You... 💗</span>
+        </div>
+
+        <div class="envelope">
+
+            <div class="envelope-fold"></div>
+
+            <div class="envelope-front"></div>
+
+            <div class="envelope-flap"></div>
+
+        </div>
+
+    </div>
+
+    <button
+        class="envelope-button"
+        id="envelopeButton"
+        onclick="openEnvelope()">
+        💌 Open Envelope
+    </button>
+
+    <button
+        class="read-letter-button"
+        id="readLetterButton"
+        onclick="openLetter()">
+        Read Your Letter 💗
+    </button>
+
+</section>
+
+<!-- PAGE 3: YOUR ORIGINAL BIRTHDAY LETTER -->
+
+<section class="page letter-page hidden" id="letterPage">
+
+    <p class="small-title">A little note from your girl</p>
+
+    <h2>Happy Birthday, My Love! 💗</h2>
+
+    <div class="letter-paper">To my favorite person,
+
+Happy Birthday to the one who makes my world
+brighter just by being in it.
+I hope this new year of your life brings you
+happiness, success, peace, and everything
+your heart wishes for. ee year the best year
+agli kanda ninge khushi agi eru putta and let 
+all your dreams come true and yavlglu nan jothe 
+khushi khushi agi eru kanda. kasta antha bandre 
+yavaglu nan jothe ediya nanu nin bithu yellu 
+hogalla kanda yavaglu nin jothe erthini.
+Thank you for being you, for making me smile,
+and for giving me so many beautiful memories.
+No matter how many birthdays come and go,
+I hope I get to celebrate many more of them
+right beside you.
+
+Today is all about you, Birthday Boy.
+You deserve all the love in the world. 💕
+
+I love you so much!
+
+        <div class="signature">
+            Forever yours
+            ammuuuu 💌
+        </div>
+    </div>
+
+</section>
+
+<script>
+let giftOpening = false;
+let envelopeOpening = false;
+
+/* SHOW ONLY ONE PAGE */
+
+function showPage(pageToShow) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.add("hidden");
+    });
+
+    pageToShow.classList.remove("hidden");
+}
+
+/* BLAST EFFECT */
+
+function createBlast() {
+    const blast = document.getElementById("blast");
+
+    const symbols = [
+        "💖", "💕", "💗", "✨",
+        "🎀", "♥", "🌸", "💝"
+    ];
+
+    blast.classList.remove("show");
+
+    // Restart the animation
+    void blast.offsetWidth;
+
+    blast.classList.add("show");
+
+    for (let i = 0; i < 45; i++) {
+        const piece = document.createElement("div");
+
+        piece.className = "burst-piece";
+
+        piece.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 100 + Math.random() * 280;
+
+        piece.style.setProperty(
+            "--x",
+            Math.cos(angle) * distance + "px"
+        );
+
+        piece.style.setProperty(
+            "--y",
+            Math.sin(angle) * distance + "px"
+        );
+
+        piece.style.setProperty(
+            "--rotation",
+            Math.random() * 720 + "deg"
+        );
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 1500);
+    }
+
+    setTimeout(() => {
+        blast.classList.remove("show");
+    }, 900);
+}
+
+/* OPEN GIFT BOX */
+
+function openGift() {
+    if (giftOpening) return;
+
+    giftOpening = true;
+
+    const gift = document.getElementById("gift");
+    const giftButton = document.getElementById("giftButton");
+
+    giftButton.disabled = true;
+    gift.classList.add("open");
+
+    // Let the gift lid open first
+    setTimeout(() => {
+
+        // Show the envelope page
+        showPage(document.getElementById("envelopePage"));
+
+        // Create the blast transition
+        createBlast();
+
+        // Prepare the envelope
+        setTimeout(() => {
+            resetEnvelope();
+            giftOpening = false;
+        }, 500);
+
+    }, 750);
+}
+
+/* RESET ENVELOPE */
+
+function resetEnvelope() {
+    const scene = document.getElementById("envelopeScene");
+    const openButton = document.getElementById("envelopeButton");
+    const readButton = document.getElementById("readLetterButton");
+
+    scene.classList.remove("open");
+
+    openButton.style.display = "inline-block";
+    openButton.style.opacity = "1";
+    openButton.disabled = false;
+
+    readButton.classList.remove("show");
+}
+
+/* OPEN ENVELOPE */
+
+function openEnvelope() {
+    if (envelopeOpening) return;
+
+    envelopeOpening = true;
+
+    const scene = document.getElementById("envelopeScene");
+    const openButton = document.getElementById("envelopeButton");
+    const readButton = document.getElementById("readLetterButton");
+
+    openButton.disabled = true;
+
+    // Open the flap and slide the white sheet upward
+    scene.classList.add("open");
+
+    // Wait for the sheet to slide out
+    setTimeout(() => {
+        openButton.style.display = "none";
+        readButton.classList.add("show");
+        envelopeOpening = false;
+    }, 1300);
+}
+
+/* SHOW THE BIRTHDAY LETTER */
+
+function openLetter() {
+    showPage(document.getElementById("letterPage"));
+}
+</script>
+
+</body>
+</html>

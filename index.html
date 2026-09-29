@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love 💗</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink-bg: #ffe0ed;
+            --pink: #ffb6d2;
+            --pink-dark: #f45b99;
+            --pink-light: #fff7fa;
+            --text: #8e315b;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffe0ed, #ffd1e3);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Floating hearts */
+        .hearts {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            color: rgba(244, 91, 153, 0.25);
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Single opening page */
+        .page {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            padding: 0 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 585px;
+            min-height: 100vh;
+            padding: 45px 32px 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.82);
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 0 35px rgba(225, 91, 146, 0.08);
+        }
+
+        .main-heart {
+            font-size: 52px;
+            margin-bottom: 18px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(42px, 8vw, 76px);
+            line-height: 1.12;
+            font-weight: 600;
+            color: #e94e85;
+            margin-bottom: 24px;
+        }
+
+        .subtitle {
+            max-width: 450px;
+            color: #a15d7c;
+            font-size: 16px;
+            line-height: 1.9;
+            margin-bottom: 28px;
+        }
+
+        .instruction {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #873052;
+        }
+
+        /* Date-entry box */
+        .date-box {
+            width: 100%;
+            max-width: 480px;
+            min-height: 115px;
+            padding: 12px 18px;
+            margin-bottom: 20px;
+            border: 2px dashed #f6a0c1;
+            border-radius: 20px;
+            background: rgba(255, 245, 249, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Heart inside the date box */
+        .date-heart {
+            font-size: 25px;
+            line-height: 1.2;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .date-display {
+            min-height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e94e85;
+            font-size: 20px;
+            letter-spacing: 7px;
+            white-space: nowrap;
+        }
+
+        /* Number keypad */
+        .keypad {
+            width: 100%;
+            max-width: 350px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .key {
+            height: 61px;
+            border: none;
+            border-radius: 17px;
+            background: #ffe0ed;
+            color: #a93668;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .key:hover {
+            background: #ffc8dd;
+            transform: translateY(-2px);
+        }
+
+        .key:active {
+            transform: scale(0.96);
+        }
+
+        .key.clear {
+            font-size: 14px;
+            background: #f8c5da;
+        }
+
+        .key.enter {
+            background: #f45b99;
+            color: white;
+        }
+
+        .key:disabled {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        .message {
+            min-height: 25px;
+            margin-top: 14px;
+            color: #c23d73;
+            font-size: 13px;
+        }
+
+        .small-note {
+            margin-top: 10px;
+            color: #a15d7c;
+            font-size: 13px;
+        }
+
+        @media (max-width: 480px) {
+            .page {
+                padding: 0;
+            }
+
+            .container {
+                padding: 35px 20px;
+                border-radius: 0;
+            }
+
+            .subtitle {
+                font-size: 14px;
+            }
+
+            .keypad {
+                gap: 8px;
+            }
+
+            .key {
+                height: 56px;
+            }
+
+            .date-display {
+                letter-spacing: 5px;
+                font-size: 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating hearts background -->
+    <div class="hearts" id="hearts"></div>
+
+    <!-- ONE OPENING PAGE -->
+    <main class="page">
+        <div class="container">
+
+            <div class="main-heart">💗</div>
+
+            <h1>
+                Happy Birthday,<br>
+                My Love!
+            </h1>
+
+            <p class="subtitle">
+                You are the most special person in my life.
+                I have a little surprise waiting just for you.
+            </p>
+
+            <p class="instruction">
+                Enter your Date of Birth 💌
+            </p>
+
+            <!-- Heart centered inside the date-entry box -->
+            <div class="date-box">
+                <div class="date-heart">💗</div>
+
+                <div class="date-display" id="dateDisplay">
+                    _ _ _ _ _ _ _ _
+                </div>
+            </div>
+
+            <!-- Number keypad -->
+            <div class="keypad">
+                <button class="key" type="button" onclick="addDigit('1')">1</button>
+                <button class="key" type="button" onclick="addDigit('2')">2</button>
+                <button class="key" type="button" onclick="addDigit('3')">3</button>
+
+                <button class="key" type="button" onclick="addDigit('4')">4</button>
+                <button class="key" type="button" onclick="addDigit('5')">5</button>
+                <button class="key" type="button" onclick="addDigit('6')">6</button>
+
+                <button class="key" type="button" onclick="addDigit('7')">7</button>
+                <button class="key" type="button" onclick="addDigit('8')">8</button>
+                <button class="key" type="button" onclick="addDigit('9')">9</button>
+
+                <button class="key clear" type="button" onclick="clearDate()">Clear</button>
+                <button class="key" type="button" onclick="addDigit('0')">0</button>
+                <button class="key enter" id="goButton" type="button" onclick="checkDate()">Go 💗</button>
+            </div>
+
+            <p class="message" id="dateMessage"></p>
+
+            <p class="small-note">
+                Made with love, just for you 💕
+            </p>
+
+        </div>
+    </main>
+
+    <script>
+        let enteredDate = "";
+        let isNavigating = false;
+
+        const dateDisplay = document.getElementById("dateDisplay");
+        const dateMessage = document.getElementById("dateMessage");
+        const goButton = document.getElementById("goButton");
+
+        function updateDateDisplay() {
+            const digits = enteredDate.split("");
+
+            while (digits.length < 8) {
+                digits.push("_");
+            }
+
+            dateDisplay.textContent = digits.join(" ");
+        }
+
+        function addDigit(digit) {
+            if (isNavigating || enteredDate.length >= 8) {
+                return;
+            }
+
+            enteredDate += digit;
+            dateMessage.textContent = "";
+            updateDateDisplay();
+        }
+
+        function clearDate() {
+            if (isNavigating) {
+                return;
+            }
+
+            enteredDate = "";
+            dateMessage.textContent = "";
+            updateDateDisplay();
+        }
+
+        function checkDate() {
+            if (isNavigating) {
+                return;
+            }
+
+            if (enteredDate.length !== 8) {
+                dateMessage.textContent = "Please enter all 8 digits 💗";
+                return;
+            }
+
+            isNavigating = true;
+            goButton.disabled = true;
+            goButton.textContent = "Opening...";
+
+            // Open the gift page directly, only once.
+            window.location.href = "gift.html";
+        }
+
+        // Create floating hearts
+        const heartsContainer = document.getElementById("hearts");
+        const heartSymbols = ["♥", "♡", "💕", "💗", "💖"];
+
+        for (let i = 0; i < 24; i++) {
+            const heart = document.createElement("span");
+
+            heart.className = "heart";
+            heart.textContent =
+                heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+            heart.style.left = Math.random() * 100 + "%";
+            heart.style.fontSize = (14 + Math.random() * 22) + "px";
+            heart.style.animationDuration = (9 + Math.random() * 12) + "s";
+            heart.style.animationDelay = (Math.random() * 10) + "s";
+
+            heartsContainer.appendChild(heart);
+        }
+    </script>
+
+</body>
+</html>
